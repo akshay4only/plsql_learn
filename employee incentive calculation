@@ -1,0 +1,7 @@
+declare 
+Incentive number(8,2);
+begin
+select HR.EMPLOYEES.SALARY into incentive 
+    from HR.EMPLOYEES where HR.EMPLOYEES.EMPLOYEE_ID=100;
+DBMS_OUTPUT.PUT_LINE('Incentive = '|| to_char(incentive)); 
+END;
