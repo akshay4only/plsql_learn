@@ -1,0 +1,32 @@
+-- Invalid age exception 
+SET SERVEROUTPUT ON;
+DECLARE
+    num NUMBER;
+    age NUMBER := :num;
+    ex_invalid_age EXCEPTION;
+BEGIN
+    IF age < 0 THEN
+        RAISE ex_invalid_age;
+    END IF;
+EXCEPTION
+    WHEN ex_invalid_age THEN
+        dbms_output.put_line('INVALID AGE');
+END;
+
+--** predefiend exceptions **--
+--NO DATA FOUND--
+DECLARE 
+
+V_NAME QC_USER_AUTH.QM_USER.userfname%TYPE;
+U_CODE VARCHAR2(100) ;
+BEGIN
+
+select userfname into V_NAME from QC_USER_AUTH.QM_USER where USERID =:U_CODE;
+DBMS_OUTPUT.PUT_LINE ('USER FNAME : ' || V_NAME);
+
+EXCEPTION 
+WHEN NO_DATA_FOUND THEN
+DBMS_OUTPUT.PUT_LINE ('EMPLOYEE NOT FOUND');
+END;
+
+
